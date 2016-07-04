@@ -1,0 +1,77 @@
+nxt_robot:
+# - type: single_motor
+#    name: lifter_motor_joint
+#    port: PORT_A
+#    tacho_limit: 360
+#    desired_frequency: 10.0
+  - type: differential_motor
+    name: front_wheels
+    tacho_limit: 0
+    motor_1_name: left_motor_joint
+    motor_1_port: PORT_B
+    motor_1_frame_id: left_motor_link
+    motor_2_name: right_motor_joint
+    motor_2_port: PORT_C
+    motor_2_frame_id: right_motor_link
+    desired_frequency: 10.0
+  - type: magnetic
+    frame_id: magnetic_sensor_link
+    name: magnetic_sensor
+    port: PORT_1
+    desired_frequency: 5.0
+  - type: ultrasonic
+    frame_id: ultrasonic_sensor_link
+    name: ultrasonic_sensor
+    port: PORT_2
+    spread_angle: 0.2
+    min_range: 0.01
+    max_range: 2.5
+    desired_frequency: 5.0
+  - type: intensity
+    frame_id: intensity_sensor_link
+    name: intensity_sensor
+    port: PORT_3
+    desired_frequency: 5.0
+  - type: gyro
+    frame_id: gyro_sensor_link
+    name: gyro_sensor
+    port: PORT_4
+    desired_frequency: 10.0
+
+##  Other supported sensors
+######################################
+#  - type: touch
+#    frame_id: touch_sensor_link
+#    name: touch_sensor
+#    port: PORT_1
+#    desired_frequency: 10.0
+#  - type: sound
+#    frame_id: sound_sensor_link
+#    name: sound_sensor
+#    port: PORT_1
+#    desired_frequency: 15.0
+#  - type: color
+#    frame_id: color_sensor_link
+#    name: color_sensor
+#    port: PORT_3
+#    light_only: false
+#    red: 0.0
+#    green: 0.0
+#    blue: 0.0
+#    desired_frequency: 10.0
+#  - type: accelerometer
+#    frame_id: accelerometer_sensor_link
+#    name: accelerometer_sensor
+#    port: PORT_2
+#    desired_frequency: 15.0
+#  - type: eopd
+#    frame_id: eopd_sensor_link
+#    name: eopd_sensor
+#    port: PORT_3
+#    short_range: true
+#    desired_frequency: 10.0
+#  - type: compass
+#    frame_id: compass_sensor_link
+#    name: compass_sensor
+#    port: PORT_3
+#    desired_frequency: 10.0

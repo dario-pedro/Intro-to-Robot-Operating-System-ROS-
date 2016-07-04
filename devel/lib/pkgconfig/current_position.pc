@@ -1,0 +1,8 @@
+prefix=/home/dario/trsa_ws/devel
+
+Name: current_position
+Description: Description of current_position
+Version: 0.0.0
+Cflags: -I/home/dario/trsa_ws/src/nxt_final/nxt_controllers/current_position/include
+Libs: -L/home/dario/trsa_ws/devel/lib -lcurrent_position
+Requires: nxt_msgs roscpp nav_msgs

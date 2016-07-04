@@ -1,0 +1,8 @@
+prefix=/home/dario/trsa_ws/devel
+
+Name: nxt_ros
+Description: Description of nxt_ros
+Version: 1.0.0
+Cflags: 
+Libs: -L/home/dario/trsa_ws/devel/lib 
+Requires: rospy nxt_lib sensor_msgs nxt_msgs

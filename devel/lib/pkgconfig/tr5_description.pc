@@ -1,0 +1,8 @@
+prefix=/home/dario/trsa_ws/devel
+
+Name: tr5_description
+Description: Description of tr5_description
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/dario/trsa_ws/devel/lib 
+Requires: 

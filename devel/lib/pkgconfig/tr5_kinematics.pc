@@ -1,0 +1,8 @@
+prefix=/home/dario/trsa_ws/devel
+
+Name: tr5_kinematics
+Description: Description of tr5_kinematics
+Version: 1.0.0
+Cflags: -I/home/dario/trsa_ws/devel/include -I/home/dario/trsa_ws/src/rob_t2/tr5_kinematics/include
+Libs: -L/home/dario/trsa_ws/devel/lib 
+Requires: roscpp std_msgs geometry_msgs sensor_msgs

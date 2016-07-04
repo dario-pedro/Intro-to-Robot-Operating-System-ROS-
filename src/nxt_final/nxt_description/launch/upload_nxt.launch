@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<launch>
+
+    <node name="rviz_node" pkg="rviz" type="rviz" />
+
+    <param name="robot_description"
+           command="$(find xacro)/xacro '$(find nxt_description)/urdf/nxt_robot.urdf.xacro'" />
+
+    <node name="nxt_state_publisher" pkg="robot_state_publisher" type="state_publisher">
+        <!-- <remap from="joint_states" to="/nxt/gui_joints" /> -->
+        <remap from="joint_states" to="/nxt/joint_states" />
+    </node>
+
+    <!--<node name="nxt_joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" >
+        <param name="use_gui" value="True"/>
+        <param name="rate" type="double" value="20.0" />
+        <remap from="joint_states" to="/nxt/gui_joints" /> 
+    </node>-->
+
+</launch>

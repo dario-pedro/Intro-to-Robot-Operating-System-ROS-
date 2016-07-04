@@ -1,0 +1,8 @@
+prefix=/home/dario/trsa_ws/devel
+
+Name: t
+Description: Description of t
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/dario/trsa_ws/devel/lib 
+Requires: 

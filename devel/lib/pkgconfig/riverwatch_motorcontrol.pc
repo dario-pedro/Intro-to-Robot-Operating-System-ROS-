@@ -1,0 +1,8 @@
+prefix=/home/dario/trsa_ws/devel
+
+Name: riverwatch_motorcontrol
+Description: Description of riverwatch_motorcontrol
+Version: 0.0.1
+Cflags: -I/home/dario/trsa_ws/src/new_fuerte_riverwatch/riverwatch_motorcontrol/include
+Libs: -L/home/dario/trsa_ws/devel/lib -lriverwatch_motorcontrol
+Requires: roscpp sensor_msgs diagnostic_updater

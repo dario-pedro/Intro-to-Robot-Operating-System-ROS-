@@ -1,0 +1,8 @@
+prefix=/home/dario/trsa_ws/devel
+
+Name: riverwatch_locomotion
+Description: Description of riverwatch_locomotion
+Version: 0.0.1
+Cflags: -I/home/dario/trsa_ws/devel/include -I/home/dario/trsa_ws/src/new_fuerte_riverwatch/riverwatch_locomotion/include
+Libs: -L/home/dario/trsa_ws/devel/lib -lriverwatch_locomotion
+Requires: roscpp tf geometry_msgs std_msgs sensor_msgs diagnostic_updater dynamic_reconfigure message_runtime

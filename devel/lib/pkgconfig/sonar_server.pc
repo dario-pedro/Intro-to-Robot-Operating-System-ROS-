@@ -1,0 +1,8 @@
+prefix=/home/dario/trsa_ws/devel
+
+Name: sonar_server
+Description: Description of sonar_server
+Version: 0.0.1
+Cflags: -I/home/dario/trsa_ws/src/new_fuerte_riverwatch/SonarServer/include
+Libs: -L/home/dario/trsa_ws/devel/lib -lSonarServer
+Requires: roscpp rospy std_msgs pcl_ros

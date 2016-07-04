@@ -1,0 +1,8 @@
+prefix=/home/dario/trsa_ws/devel
+
+Name: nxt_description
+Description: Description of nxt_description
+Version: 1.0.0
+Cflags: 
+Libs: -L/home/dario/trsa_ws/devel/lib 
+Requires: 

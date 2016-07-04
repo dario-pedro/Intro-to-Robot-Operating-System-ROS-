@@ -1,0 +1,8 @@
+pub_rate: 4.0
+analyzers:
+  speed_pid:
+    type: diagnostic_aggregator/GenericAnalyzer
+    path: 'speed_pid'
+    timeout: 1.0
+    contains: ['speed_pid']
+

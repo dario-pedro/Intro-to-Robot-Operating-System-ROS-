@@ -1,0 +1,184 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="nxt">
+
+
+    <property name="pi" value="3.14159265" />
+
+    <!-- @todo Inertia parameters -->
+    <property name="base_mass" value="4.0" />
+
+    <xacro:macro name="nxt_robot_motor" params="prefix parent motor_id motor_off_y wheel_off_y">
+
+        <joint name="${prefix}${motor_id}motor_base_joint" type="fixed">
+            <parent link="${prefix}${parent}" />
+            <child link = "${prefix}${motor_id}motor_link" />
+            <origin xyz=".05 ${motor_off_y} -0.055" rpy="0.0 ${pi} 0.0" />
+        </joint>
+
+        <link name="${prefix}${motor_id}motor_link">
+            <visual>
+                <geometry>
+                    <mesh filename="package://nxt_description/meshes/Motor.dae" />
+                </geometry>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 ${pi/2}"/>
+            </visual>
+            <collision>
+                <geometry>
+                    <mesh filename="package://nxt_description/meshes/Motor.dae" />
+                </geometry>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 ${pi/2}"/>
+            </collision>
+        </link>
+
+        <joint name="${prefix}${motor_id}motor_joint" type="continuous">
+            <parent link="${prefix}${motor_id}motor_link" />
+            <child link = "${prefix}${motor_id}motor_servo_link" />
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+             <axis xyz="0 1 0" />
+        </joint>
+
+        <link name="${prefix}${motor_id}motor_servo_link">
+            <visual>
+                <geometry>
+                    <mesh filename="package://nxt_description/meshes/MotorServo.dae" />
+                </geometry>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 ${pi/2}"/>
+            </visual>
+            <collision>
+                <geometry>
+                    <mesh filename="package://nxt_description/meshes/MotorServo.dae" />
+                </geometry>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 ${pi/2}"/>
+            </collision>
+        </link>
+
+        <joint name="${prefix}${motor_id}servo_to_wheel_joint" type="fixed">
+            <parent link="${prefix}${motor_id}motor_servo_link" />
+            <child link = "${prefix}${motor_id}motor_wheel_link" />
+            <origin xyz="0.0 ${wheel_off_y} 0.0" rpy="0.0 0.0 0.0" />
+        </joint>
+
+
+        <link name="${prefix}${motor_id}motor_wheel_link">
+            <visual>
+                <geometry>
+                    <mesh filename="package://nxt_description/meshes/Wheel.dae" />
+                </geometry>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            </visual>
+            <collision>
+                <geometry>
+                    <mesh filename="package://nxt_description/meshes/Wheel.dae" />
+                </geometry>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            </collision>
+        </link>
+
+    </xacro:macro>
+
+    <xacro:macro name="nxt_robot_ultrasonic_sensor" params="prefix parent sensor_id ">
+
+        <joint name="${prefix}${sensor_id}sensor_joint" type="fixed">
+            <parent link="${prefix}${parent}" />
+            <child link = "${prefix}${sensor_id}sensor_link" />
+            <origin xyz="-.045 0 0.12" rpy="0.0 0.0 0.0" />
+        </joint>
+
+        <link name="${prefix}${sensor_id}sensor_link">
+            <visual>
+                <geometry>
+                    <mesh filename="package://nxt_description/meshes/sensors/UltraSonicSensor.dae" />
+                </geometry>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 ${pi} ${pi/2}"/>
+            </visual>
+            <collision>
+                <geometry>
+                    <mesh filename="package://nxt_description/meshes/sensors/UltraSonicSensor.dae" />
+                </geometry>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 ${pi} ${pi/2}"/>
+            </collision>
+        </link>
+
+    </xacro:macro>
+
+    <xacro:macro name="nxt_robot_magnetic_sensor" params="prefix parent sensor_id ">
+
+        <joint name="${prefix}${sensor_id}sensor_joint" type="fixed">
+            <parent link="${prefix}${parent}" />
+            <child link = "${prefix}${sensor_id}sensor_link" />
+            <origin xyz=".11 0.07 0.02" rpy="0.0 ${-pi/8} 0.0" />
+        </joint>
+
+        <link name="${prefix}${sensor_id}sensor_link">
+            <visual>
+                <geometry>
+                    <mesh filename="package://nxt_description/meshes/sensors/MagneticSensor.dae" />
+                </geometry>
+                <origin xyz="0.0 0.0 -0.02" rpy="0.0 0.0 ${pi/2}"/>
+            </visual>
+            <collision>
+                <geometry>
+                    <mesh filename="package://nxt_description/meshes/sensors/MagneticSensor.dae" />
+                </geometry>
+                <origin xyz="0.0 0.0 -0.02" rpy="0.0 0.0 ${pi/2}"/>
+            </collision>
+        </link>
+
+    </xacro:macro>
+
+   <xacro:macro name="nxt_robot_light_sensor" params="prefix parent sensor_id ">
+
+        <joint name="${prefix}${sensor_id}sensor_joint" type="fixed">
+            <parent link="${prefix}${parent}" />
+            <child link = "${prefix}${sensor_id}sensor_link" />
+            <origin xyz=".12 0 -0.04" rpy="0.0 ${3*pi/8} 0.0" />
+        </joint>
+
+        <link name="${prefix}${sensor_id}sensor_link">
+            <visual>
+                <geometry>
+                    <mesh filename="package://nxt_description/meshes/sensors/MagneticSensor.dae" />
+                </geometry>
+                <origin xyz="0.0 0.0 -0.02" rpy="0.0 0.0 ${pi/2}"/>
+            </visual>
+            <collision>
+                <geometry>
+                    <mesh filename="package://nxt_description/meshes/sensors/MagneticSensor.dae" />
+                </geometry>
+                <origin xyz="0.0 0.0 -0.02" rpy="0.0 0.0 ${pi/2}"/>
+            </collision>
+        </link>
+
+    </xacro:macro>
+
+    <xacro:macro name="nxt_robot" params="prefix">
+
+        <!-- Base %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+        <link name="${prefix}base_link" >
+            <visual>
+                <geometry>
+                    <!--box size="0.250 .160 ${shoulder_height}"/ -->
+                    <mesh filename="package://nxt_description/meshes/NXTBrick.dae" />
+                </geometry>
+                <origin xyz="0.0 0.0 0.0" rpy="${3*pi/16} 0.0 ${pi/2}"/>
+            </visual>
+            <collision>
+                <geometry>
+                    <mesh filename="package://nxt_description/meshes/NXTBrick.dae" />
+                </geometry>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            </collision>
+        </link>
+
+        <xacro:nxt_robot_motor prefix="${prefix}" parent="base_link" motor_id="right_" motor_off_y="0.03" wheel_off_y ="0.02"/>
+        <xacro:nxt_robot_motor prefix="${prefix}" parent="base_link" motor_id="left_" motor_off_y="-0.03" wheel_off_y ="-0.02"/>
+
+        <xacro:nxt_robot_ultrasonic_sensor prefix="${prefix}" parent="base_link" sensor_id="ultrasonic_" />
+        <xacro:nxt_robot_magnetic_sensor prefix="${prefix}" parent="base_link" sensor_id="magnetic_" />
+        <xacro:nxt_robot_light_sensor prefix="${prefix}" parent="base_link" sensor_id="light_" />
+
+
+    </xacro:macro>
+
+</robot>

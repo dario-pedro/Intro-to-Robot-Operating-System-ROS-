@@ -1,0 +1,8 @@
+prefix=/home/dario/trsa_ws/devel
+
+Name: magnetic_detector
+Description: Description of magnetic_detector
+Version: 0.0.0
+Cflags: -I/home/dario/trsa_ws/src/nxt_final/nxt_controllers/magnetic_detector/include
+Libs: -L/home/dario/trsa_ws/devel/lib -lmagnetic_detector
+Requires: nxt_msgs roscpp geometry_msgs

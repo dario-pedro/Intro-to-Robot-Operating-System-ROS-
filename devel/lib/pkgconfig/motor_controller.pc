@@ -1,0 +1,8 @@
+prefix=/home/dario/trsa_ws/devel
+
+Name: motor_controller
+Description: Description of motor_controller
+Version: 0.0.0
+Cflags: -I/home/dario/trsa_ws/devel/include -I/home/dario/trsa_ws/src/nanotech/motor_controller/include
+Libs: -L/home/dario/trsa_ws/devel/lib 
+Requires: trajectory_msgs roscpp std_msgs message_runtime

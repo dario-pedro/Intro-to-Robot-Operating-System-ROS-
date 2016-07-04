@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="nxt" >
+
+
+    <xacro:include filename="$(find nxt_description)/urdf/nxt.urdf.xacro" />
+
+    <xacro:nxt_robot prefix="nxt/"/>
+
+    <link name="nxt/base_footprint" />
+
+    <joint name="nxt/base_footprint_joint" type="fixed">
+        <parent link="nxt/base_footprint" />
+        <child link = "nxt/base_link" />
+        <origin xyz="0.0 0.0 0.08" rpy="0.0 0.0 0.0" />
+    </joint>
+
+</robot>

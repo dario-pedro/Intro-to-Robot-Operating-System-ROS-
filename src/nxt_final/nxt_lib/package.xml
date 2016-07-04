@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package>
+
+    <name>nxt_lib</name>
+    <version>1.0.0</version>
+    <description>
+        The nxt_lib package provides the low-level interfaces between the NXT
+        and the computer host.
+    </description>
+
+    <maintainer email="rmm@uninova.pt">Ricardo Mendonça</maintainer>
+
+    <author>Marcus Wanner</author>
+    <url>http://code.google.com/p/nxt-python/</url>
+    <license>GPL</license>
+
+    <buildtool_depend>catkin</buildtool_depend>
+
+</package>

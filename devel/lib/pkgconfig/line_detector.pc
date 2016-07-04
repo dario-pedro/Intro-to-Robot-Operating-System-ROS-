@@ -1,0 +1,8 @@
+prefix=/home/dario/trsa_ws/devel
+
+Name: line_detector
+Description: Description of line_detector
+Version: 0.0.0
+Cflags: -I/home/dario/trsa_ws/src/nxt_final/nxt_controllers/line_detector/include
+Libs: -L/home/dario/trsa_ws/devel/lib -lline_detector
+Requires: nxt_msgs roscpp std_msgs

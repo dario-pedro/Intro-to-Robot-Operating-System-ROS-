@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<launch>
+
+   <include file="$(find nxt_description)/launch/upload_nxt.launch" />
+   <include file="$(find robot_pose_ekf)/robot_pose_ekf.launch" /> 
+  <!-- <include file="$(find nxt_ros)/launch/pid_nxt.launch" /> -->
+    
+   <!-- <node name="steering_gui" pkg="rqt_robot_steering" type="rqt_robot_steering" /> -->
+
+    <node name="nxt_robot" pkg="nxt_ros" type="nxt_ros.py"
+          output="screen" required="true" >
+          <rosparam file="$(find nxt_ros)/lego_robot.yaml" command="load" />
+    </node>  
+
+    <node name="nxt_odometry" pkg="nxt_ros" type="base_odometry.py" />
+
+    <node pkg="tf" type="static_transform_publisher" name="odom_to_map"
+          args="1.5 3 0   1.570796327 0 0  /map /odom 100" /> 
+
+    <node name="nxt_obstacle_detector" pkg="obstacle_detector" type="obstacle_detector_node"
+          output="screen" required="true" /> 
+
+   <node name="current_position" pkg="current_position" type="current_position_node" /> 
+
+
+
+    <node name="magnetic_detector" pkg="magnetic_detector" type="magnetic_detector_node" />
+
+
+
+
+
+
+</launch>

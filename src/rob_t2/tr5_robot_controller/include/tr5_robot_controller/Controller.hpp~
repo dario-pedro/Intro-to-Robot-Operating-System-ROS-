@@ -1,0 +1,63 @@
+#ifndef _TR5_CONTROLLER_HPP__
+#define _TR5_CONTROLLER_HPP__
+
+#include <ros/ros.h>
+
+#include <visualization_msgs/Marker.h>
+#include <interactive_markers/interactive_marker_server.h>
+
+//
+// TODO add the required header includes
+//
+#include "sensor_msgs/JointState.h"
+#include "tr5_robot_controller/KinematicMode.h"
+
+typedef visualization_msgs::InteractiveMarkerFeedbackConstPtr IMarkerConstPtr;
+
+
+namespace TR5
+{
+    //
+    // TODO complete the below class definition
+    //
+
+    class Controller
+    {
+        public:
+
+            Controller ();
+            virtual ~Controller (){};
+
+            void run();
+
+        private:
+
+            bool                                         m_inverse_mode;
+	    bool                                         intelligent_mode;
+
+            ros::NodeHandle                               m_nd;
+
+            ros::Publisher                                m_pub_goal_ps;
+            ros::Publisher                                m_pub_goal_jt;
+
+            ros::Subscriber                               m_sub_gui_jt;		
+	    ros::Subscriber                               m_sub_pose;
+
+	    ros::ServiceClient                            m_client_fk;
+	    ros::ServiceClient                            m_client_ik;
+
+	    ros::ServiceServer                            kinMode;
+
+            visualization_msgs::Marker                    m_marker;
+            visualization_msgs::InteractiveMarker         m_imarker;
+            interactive_markers::InteractiveMarkerServer  m_marker_server;
+
+            void create_interactive_marker();
+            void gui_joints_clbk ( const sensor_msgs::JointState::ConstPtr& );
+            void input_pose_clbk ( const IMarkerConstPtr&                   );
+	    bool Kin_mode(tr5_robot_controller::KinematicMode::Request  &req,
+                         tr5_robot_controller::KinematicMode::Response &res);
+    };
+}
+
+#endif /* _TR5_CONTROLLER_HPP__ */
